@@ -56,6 +56,7 @@ if sys.argv[1] == 'cluster':
                 pass
         returnval = subtotal
 
+
     else:
         # Try to pull the managers object data
         try:
@@ -78,9 +79,19 @@ if sys.argv[1] == 'cluster':
             else:
                 zbx_fail()
 
+# Mod to check if ES is up
+elif sys.argv[1] == 'service':
+    if sys.argv[2] == 'status':
+        try:
+            conn.status()
+            returnval = 0
+        except Exception, e:
+            returnval = 1
+
 else: # Not clusterwide, check the next arg
 
     nodestats = conn.cluster_stats()
+    print nodestats
     for nodename in nodestats['nodes']:
         if sys.argv[1] in nodestats['nodes'][nodename]['name']:
             if sys.argv[2] in indexingkeys:
