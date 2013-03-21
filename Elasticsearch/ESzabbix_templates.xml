@@ -9,7 +9,7 @@
     </groups>
     <templates>
         <template>
-            <Template>Elasticsearch Service</template>
+            <template>Elasticsearch Service</template>
             <name>Elasticsearch Service</name>
             <groups>
                 <group>
