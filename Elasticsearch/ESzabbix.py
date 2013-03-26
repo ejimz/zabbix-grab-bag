@@ -79,14 +79,14 @@ if sys.argv[1] == 'cluster':
             else:
                 zbx_fail()
 
-# Mod to check if ES is up
+# Mod to check if ES service is up
 elif sys.argv[1] == 'service':
     if sys.argv[2] == 'status':
         try:
             conn.status()
-            returnval = 0
-        except Exception, e:
             returnval = 1
+        except Exception, e:
+            returnval = 0
 
 else: # Not clusterwide, check the next arg
 
